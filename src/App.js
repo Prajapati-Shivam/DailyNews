@@ -1,17 +1,41 @@
-import './App.css';
-
-import React, { Component } from 'react'
-import Navbar from './components/Navbar';
+import React, { useState } from 'react'
+import NavBar from './components/Navbar'
 import News from './components/News';
+import "./style.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <Navbar/>
-        <News/>
-      </div>
-    )
-  }
+const App = () => {
+
+  const [progress, setProgress] = useState(0);
+
+  return (
+    <div>
+      <Router>
+        <NavBar />
+        <LoadingBar
+          color='#fff'
+          progress={progress}
+          height={3}
+        />
+
+        <Routes>
+          <Route exact path="/" element={<News setProgress={setProgress} key="top" country="in" category="top" />} />
+          <Route exact path="/business" element={<News setProgress={setProgress} key="business" country="in" category="business" />} />
+          <Route exact path="/entertainment" element={<News setProgress={setProgress} key="entertainment" country="in" category="entertainment" />} />
+          <Route exact path="/politics" element={<News setProgress={setProgress} key="politics" country="in" category="politics" />} />
+          <Route exact path="/science" element={<News setProgress={setProgress} key="science" country="in" category="science" />} />
+          <Route exact path="/sports" element={<News setProgress={setProgress} key="science" country="in" category="sports" />} />
+          <Route exact path="/world" element={<News setProgress={setProgress} key="world" country="in" category="world" />} />
+        </Routes>
+      </Router>
+
+    </div>
+  )
 }
-// My API KEY - 70cbf4083bba460a8247c56a7013c984 
+
+export default App;
