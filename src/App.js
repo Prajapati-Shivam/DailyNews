@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import NavBar from './components/Navbar'
+import Navbar from './components/Navbar'
 import News from './components/News';
 import "./style.css";
 import {
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <NavBar />
+        <Navbar />
         <LoadingBar
           color='#fff'
           progress={progress}

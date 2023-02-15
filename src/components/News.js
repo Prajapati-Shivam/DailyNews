@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const News = (props) => {
   const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -21,15 +21,16 @@ const News = (props) => {
     setArticles(parsedData.results);
     setLoading(false);
     props.setProgress(100);
+    console.log("update!")
   }
 
+  document.title = `Daily News - ${capitalizeFirstLetter(props.category)} news`;
   useEffect(() => {
-    document.title = `Daily News - ${capitalizeFirstLetter(props.category)}`;
     updateNews();
-  },)
+  }, [props.category])
 
   return (
-    <div className='container my-[6em] mx-auto'>
+    <div className='container my-[5em] mx-auto'>
       {loading && <Spinner />}
       <div className='container flex flex-wrap align-center justify-center gap-10 news-container'>
         {articles.map((element) => {
