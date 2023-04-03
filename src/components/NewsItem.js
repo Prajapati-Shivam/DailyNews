@@ -4,16 +4,16 @@ const NewsItem = (props) => {
   let { title, description, imageUrl, newsUrl, date } = props;
   return (
 
-    <div className="max-w-sm relative h-[500px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 news-item">
+    <div className="max-w-sm relative h-[500px] bg-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 news-item">
       <a href="/">
         <img className="rounded-t-lg h-[225px] w-full object-cover news-image" src={imageUrl} alt="" />
       </a>
       <div className="p-5">
-        <h5 className="mb-2 break-all text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-2 break-all text-2xl font-bold tracking-tight text-white dark:text-white">
           {title}
         </h5>
 
-        <p className="mb-3 font-normal break-all text-gray-700 dark:text-gray-400">
+        <p className="mb-3 font-normal break-all text-gray-400 dark:text-gray-400">
           {description}
         </p>
         <p className="my-4 font-light text-gray-800 dark:text-gray-400">{date}</p>
