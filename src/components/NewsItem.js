@@ -9,11 +9,11 @@ const NewsItem = (props) => {
         <img className="rounded-t-lg h-[225px] w-full object-cover news-image" src={imageUrl} alt="" />
       </a>
       <div className="p-5">
-        <h5 className="mb-2 break-all text-2xl font-bold tracking-tight text-white dark:text-white">
+        <h5 className="title mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
           {title}
         </h5>
 
-        <p className="mb-3 font-normal break-all text-gray-400 dark:text-gray-400">
+        <p className="desc mb-3 font-normal text-gray-400 dark:text-gray-400">
           {description}
         </p>
         <p className="my-4 font-light text-gray-800 dark:text-gray-400">{date}</p>

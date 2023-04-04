@@ -38,8 +38,8 @@ const News = (props) => {
           return <div key={element.link}>
             <NewsItem
               imageUrl={!element.image_url ? "https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA=" : element.image_url}
-              title={element.title ? element.title.slice(0, 50) + "..." : ""}
-              description={element.description ? element.description.slice(0, 100) + "..." : ""}
+              title={element.title}
+              description={element.description}
               date={element.pubDate}
               newsUrl={element.link} />
           </div>
