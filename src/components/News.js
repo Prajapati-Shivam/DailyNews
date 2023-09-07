@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import NewsItem from './NewsItem'
-import Spinner from './Spinner';
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from "react";
+import NewsItem from "./NewsItem";
+import Spinner from "./Spinner";
+import PropTypes from "prop-types";
+import altImage from "../assests/altImage.jpg";
 
 const News = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  };
 
   const updateNews = async () => {
     props.setProgress(10);
@@ -21,42 +22,45 @@ const News = (props) => {
     setArticles(parsedData.results);
     setLoading(false);
     props.setProgress(100);
-    console.log("update!")
-  }
+    console.log("update!");
+  };
 
   document.title = `Daily News - ${capitalizeFirstLetter(props.category)} news`;
   useEffect(() => {
     updateNews();
     // eslint-disable-next-line
-  }, [props.category])
+  }, [props.category]);
 
   return (
-    <div className='container my-[5em] mx-auto'>
+    <div className="container my-[5em] mx-auto">
       {loading && <Spinner />}
-      <div className='container flex flex-wrap align-center justify-center gap-10 news-container'>
+      <div className="container flex flex-wrap align-center justify-center gap-10 news-container">
         {articles.map((element) => {
-          return <div key={element.link}>
-            <NewsItem
-              imageUrl={!element.image_url ? "https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA=" : element.image_url}
-              title={element.title}
-              description={element.description}
-              date={element.pubDate}
-              newsUrl={element.link} />
-          </div>
+          return (
+            <div key={element.link}>
+              <NewsItem
+                imageUrl={element.image_url ? element.image_url : altImage}
+                title={element.title}
+                description={element.description}
+                date={element.pubDate}
+                newsUrl={element.link}
+              />
+            </div>
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
 News.defaultProps = {
-  country: 'in',
-  category: 'top',
-}
+  country: "in",
+  category: "top",
+};
 
 News.propTypes = {
   country: PropTypes.string,
   category: PropTypes.string,
-}
+};
 
-export default News
+export default News;
